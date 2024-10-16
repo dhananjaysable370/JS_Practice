@@ -1,31 +1,18 @@
-// let arr = [1, 2, 3, 4, 5, 6];
+const express = require('express')
+const dotenv = require('dotenv');
+const cors = require('cors')
+const app = express()
+const mongoose = require('mongoose');
 
-// let func = (arr) => {
-//     return arr[0];
-// }
+app.use(express.json())
+app.use(cors())
+dotenv.config();
 
-// console.log(func(arr));
-// for (let i = 0; i < arr.length; i++){
-//     console.log(arr[i]);
-// }
-
-// for (num in arr) {
-//     console.log(arr[num])
-// }
-
-// for (num of arr) {
-//     console.log(arr[num])
-// }
-// const d = arr.filter((number, index) => {
-//     return number % index === 0;
-// })
-
-// console.log(d);
-// console.log(i) //undefined
-// var i = 3;
-// console.log(j) //ReferenceError: Cannot access 'j' before initialization
-// let j = 3;
-
-
-// console.log(true&false);
-
+mongoose.connect('mongodb://localhost:27017/Operation_Crud').then(() => {
+    console.log('Connected to MongoDB')
+    app.listen(process.env.PORT, () => {
+        console.log(`Server is running on port ${process.env.PORT}`)
+    })
+}).catch((error) => {
+    console.log('Error connecting to MongoDB', error)
+})
