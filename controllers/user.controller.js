@@ -1,7 +1,7 @@
-const User = require('../models/user.js');
+import { userModel } from '../models/user.model.js'
 export const create = async (req, res) => {
     try {
-        const createUser = new User(req.body);
+        const createUser = new userModel(req.body);
         if (!createUser) {
             res.status(400).json({ success: false, message: "Failed to create user!" });
         }

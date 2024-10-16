@@ -1,9 +1,10 @@
-const express = require('express')
-const dotenv = require('dotenv');
-const cors = require('cors')
-const app = express()
-const mongoose = require('mongoose');
+import express from 'express'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import mongoose from 'mongoose'
+import router from './routes/user.route.js'
 
+const app = express()
 app.use(express.json())
 app.use(cors())
 dotenv.config();
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://localhost:27017/Operation_Crud').then(() => {
 }).catch((error) => {
     console.log('Error connecting to MongoDB', error)
 })
+
+app.use('/api/v1', router);
 
 app.use((req, res, next) => {
     res.send("Route not found!");
