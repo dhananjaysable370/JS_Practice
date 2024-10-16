@@ -26,3 +26,6 @@
 // console.log(j) //ReferenceError: Cannot access 'j' before initialization
 // let j = 3;
 
+
+// console.log(true&false);
+
