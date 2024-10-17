@@ -11,3 +11,15 @@ export const create = async (req, res) => {
         res.status(500).json({ success: false, message: "Internal Server Error!" });
     }
 }
+
+export const getallusers = async (req, res) => {
+    try {
+        const users = await userModel.find({});
+        if (!users) {
+            res.status(404).json({ success: false, message: "No user found!" });
+        }
+        res.status(200).json({ success: true, users });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+}
